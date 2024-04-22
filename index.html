@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial</title>
     <link rel="stylesheet" href="./CSS/styles.css" />
-    <link rel="stylesheet" href="" />
   </head>
 
   <header class="page-header">
@@ -51,5 +50,73 @@
       </li>
     </ul>
   </div>
+
+  <form class="form speaker-form">
+    <!--  autocomplete="on" novalidate -->
+    <div class="form-field">
+      <label for="name" class="form-label">Name</label>
+    <input type="text" name="user-name" id="name" autofocus class="form-input" placeholder="Jhon Jonson">
+    </div>
+      
+    <div class="form-field">
+      <label for="phone" class="form-label">Phone number</label>
+      <input type="tel" name="phone" id="phone">
+    </div>
+
+    <div class="form-field">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" id="email">
+    </div>
+    
+<div role="group form-field">
+  <ul class="topic-options">
+    <li>
+      <input type="checkbox" name="topic" id="html" value="html" checked>
+      <label for="html">HTML</label>
+    </li>
+    <li>
+      <input type="checkbox" name="topic" id="css" value="css">
+      <label for="css">CSS</label>
+    </li>
+    <li>
+      <input type="checkbox" name="topic" id="js" value="js">
+      <label for="js">JavaScript</label>
+    </li>
+  </ul>
+</div>
+
+<div role="group form-field">
+  <ul class="experience-options">
+    <li>
+      <input type="radio" name="experience" id="junior" value="junior" checked>
+      <label for="junior">Junior</label></li>
+    <li>
+      <input type="radio" name="experience" id="middle" value="middle">
+      <label for="middle">Middle</label></li>
+    <li>
+      <input type="radio" name="experience" id="senior" value="senior">
+      <label for="senior">Senior</label></li>
+  </ul>
+</div>
+
+    <div class="form-field">
+      <label for="upload">Upload</label>
+      <input type="file" name="upload" id="upload">
+    </div>
+
+      <div class="form-field">
+        <label for="comment">Leave a message</label>
+        <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Leave a message"></textarea>
+      </div>
+
+      <div class="form-field">
+        <input type="checkbox" name="policy" id="policy">
+        <label for="policy">Check here to indicate that you have read and agree to our Privacy Policy</label>
+      </div>
+
+      <button type="submit">Submit</button>
+
+
+  </form>
   </body>
 </html>

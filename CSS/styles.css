@@ -82,3 +82,73 @@ body {
 .item p {
   margin: 0;
 }
+
+/* speaker form */
+/* .speaker-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+} */
+
+/* ul {
+  padding: 0;
+  margin: 0;
+} */
+
+textarea {
+  resize: none;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  width: 600px;
+  outline: 1px solid tomato;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  margin-bottom: 10px;
+}
+
+.form-field input {
+  margin: 0;
+  padding: 6px 10px;
+}
+
+.form-field input::placeholder {
+  color: #909090;
+}
+
+.topic-options,
+.experience-options {
+  padding: 8px 0;
+  margin: 0;
+  list-style: none;
+  font-size: 18px;
+}
+
+.topic-options li,
+.experience-options li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topic-options label,
+.experience-options label {
+  margin-left: 8px;
+}
+
+.topic-options input[type="checkbox"];
