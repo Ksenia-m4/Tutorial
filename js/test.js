@@ -8,8 +8,9 @@ for (const number of numbers) {
     total += number;
   }
 }
-
 console.log(total);
+
+// поищем поли
 const logins = ["mango", "poly1", "ajax", "kiwi"];
 const loginToFind = "poly";
 let message = `Логин ${loginToFind} не найден`;

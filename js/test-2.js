@@ -14,7 +14,7 @@ for (let i = 0; i < numbers.length; i += 1) {
   if (number < smallestNunber) {
     smallestNunber = number;
   }
-continue;?
+  continue;
 }
 
 for (const number of numbers) {
