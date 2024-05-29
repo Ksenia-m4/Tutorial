@@ -211,10 +211,113 @@
 // };
 
 // ...(rest) - более новый способ
-const fn = function (...args) {
-  console.log(args);
-};
+// const fn = function (...args) {
+//   console.log(args);
+// };
 
-fn(1, 2, 6, 8);
-fn(25, 85, 45);
-fn(45, 78, 951);
+// fn(1, 2, 6, 8);
+// fn(25, 85, 45);
+// fn(45, 78, 951);
+
+// следующая задача
+// функция filterNumbers (array [number 1,...])
+// первым аргументом передает массив чисел
+// после первого аргумента может быть произвольное кол-во чисел
+// функция должна вернуть новый массив в котором будут только аргумнты начиная со второго
+// для которых есть аналог в оригинальном массиве
+
+// const filterNumbers = function (array, ...args) {
+//   const uniqueElements = [];
+//   // console.log(array);
+//   // console.log(args);
+
+//   for (const element of array) {
+//     if (args.includes(element)) {
+//       uniqueElements.push(element);
+//     }
+//   }
+//   return uniqueElements;
+// };
+
+// console.log(filterNumbers([11, 2, 3, 4], 10, 5, 3, 11, 7));
+
+// следующая задачка
+// const array = [1, null, 78, 8, [1, 2, 3]];
+// console.log(array);
+
+// for (const item of array) {
+//   if (Array.isArray(item)) {
+//     console.log(item);
+//   }
+// }
+
+// example 1
+
+// const genres = ["Jazz", "Blues"];
+// // добавить Рок-н-рол в конец
+// genres.push("Рок-н-рол");
+// // выведите в консоль первый элемент массива
+// console.log(genres[0]);
+// // вывести в консоль последний элемент массива
+// console.log(genres[genres.length - 1]);
+// // удалить первый элемент и вывести его в консоль
+// const firstGenre = genres.splice(0, 1);
+// console.log(firstGenre);
+// // вставьте 'Country' и 'Reggae' в начало массива
+// genres.splice(0, 0, "Country", "Reggae");
+// console.log(genres);
+
+// example 2
+
+// написать скрипт, который будет высчитывать площадь прямоугольника со сторанми, указанными в переменной values в форме строки, значение гаратировано разделяется пробелом
+
+// const value = "8 11";
+// const arr = value.split(" ");
+// let result = 0;
+
+// console.log(arr);
+// // переменные
+// // из строки делать массив. разделить массив на элементы, которые разделены пробелом
+// // умножить элементы массива между собой
+// const first = Number(arr[0]);
+// const last = Number(arr[1]);
+// result = first * last;
+// console.log(result);
+
+// example 3 перебор массива
+//напиши скрипт для перебора массива fruits через for.
+// для каждого элемента массива вывести в консоль строку номер_элемента : название элемента
+// нумерация должна начинаться с 1
+
+// const fruits = ["apple", "orange", "lemon", "apricot", "peach"];
+
+// for (let i = 0; i < fruits.length; i++) {
+//   const element = fruits[i];
+//   //   console.log(i + 1, ":", element);
+//   console.log(`${i + 1} : ${element}`);
+// }
+
+// но лучше расширить метод for
+// for (let i = 0, n = 1; i < fruits.length; i += 1, n += 1) {
+//   console.log(`${n} - ${fruits[i]}`);
+// }
+
+// example 4 массивы и циклы
+// напиши скрипт, который выводит в консоль имя и телефонный номер пользователя
+// в переменных names и phones хранятся имена и телефонные номера разделенные запятыми
+// порядковый номер имен и телефонов в строках указывают на соответствие
+// кол-во телефонов и имен гарантовано одинаково
+
+let names = "Jacob,Maria,Ruben,Aleksandr";
+let phones = "14718960932,12507914080,16281820195,11948218654";
+
+names = names.split(",");
+// console.log(names);
+phones = phones.split(",");
+// console.log(phones);
+
+// мы перебираем аж два массива, это невероятно...
+for (let i = 0; i < names.length; i += 1) {
+  // const element = array[i];
+  console.log(`${names[i]} - ${phones[i]}`);
+}
