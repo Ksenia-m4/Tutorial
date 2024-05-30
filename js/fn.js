@@ -308,16 +308,114 @@
 // порядковый номер имен и телефонов в строках указывают на соответствие
 // кол-во телефонов и имен гарантовано одинаково
 
-let names = "Jacob,Maria,Ruben,Aleksandr";
-let phones = "14718960932,12507914080,16281820195,11948218654";
+// let names = "Jacob,Maria,Ruben,Aleksandr";
+// let phones = "14718960932,12507914080,16281820195,11948218654";
 
-names = names.split(",");
-// console.log(names);
-phones = phones.split(",");
-// console.log(phones);
+// names = names.split(",");
+// // console.log(names);
+// phones = phones.split(",");
+// // console.log(phones);
 
-// мы перебираем аж два массива, это невероятно...
-for (let i = 0; i < names.length; i += 1) {
-  // const element = array[i];
-  console.log(`${names[i]} - ${phones[i]}`);
+// // мы перебираем аж два массива, это невероятно...
+// for (let i = 0; i < names.length, i < phones.length; i += 1) {
+//   // const element = array[i];
+//   console.log(`${names[i]} - ${phones[i]}`);
+// }
+
+// example 5 массивы и строки
+// напиши скрипт, который выводит в консоль все слова строки кроме первого и последнего. строка не должна начинаться или заканчиваться пробелом. скрипт должен работать с любым рядком
+
+// const string = "Welcome to the future";
+
+// const arr = string.split(" ");
+
+// const result = arr.slice(1, arr.length - 1);
+
+// console.log(result);
+
+// либо так
+// const string = "Welcome to the future";
+// // через метод slice мы можем обратиться к последнему элементу через минус, здесь это последний элемент массива
+// const result = string.split(" ").slice(1, -1).join(" ");
+// console.log(result);
+
+// example 6 массивы и строки
+// напиши скрипт, который разворачивает строку в обратном порядке букв и выводит в консоль
+// const string = "Welcome to the future";
+// const arr = string.split("").reverse().join("");
+// console.log(arr);
+
+// example 7 сортировка массива с циклом
+// напиши скрипт сортировки массива строк в алфавитном порядке по первой букве элемента
+
+// const langs = ["pyton", "js", "php", "c++", "haskel", "ruby"];
+// for (const lang of langs) {
+//   langs.sort();
+// }
+// тут без цикла через sort()
+// const result = langs.sort();
+// console.log(result);
+
+// а это через цикл for (хотя не понятно, мы же так по нормальному и не отсортировали..)
+// const langs = ["pyton", "js", "php", "c++", "haskel", "ruby"];
+
+// for (let i = 0; i < langs.length; i += 1) {
+//   if (langs[0] > langs[i]) {
+//     // метод splice возвращает нам массив и чтобы обратиться к нему а не к массиву мы должны к нему обратиться по индексу
+//     const result = langs.splice(i, 1)[0];
+//     langs.unshift(result);
+//   }
+// }
+// console.log(langs);
+
+// example 8 сортировка массива с циклом
+// напиши скрипт поиска наименьшего числа в массиве.
+// код должен работать для любых чисел
+// используй цикл для решения задачи
+
+// допускаем, что первое число массива и есит самое минимальное число
+// const numbers = [2, 17, 94, 1, 23, 37];
+// let min = numbers[0];
+
+// for (const number of numbers) {
+//   if (number < min) {
+//     min = number;
+//   }
+// }
+
+// console.log(min);
+
+// const test = [1, 2, 3];
+
+// function foo(arr) {
+//   // let test = arr - фактически внутри функции происходит это
+//   arr.splice(0, 1); //удаляем первый элемент
+// }
+
+// foo(test);
+// console.log(test); //массив 2, 3
+
+// function example 1 - высчитываем массу тела
+// напиши функцию calcBMI(weight, height), которая подсчитывает индекс массы тела.
+// для этого надо разделить вес в килограммах на квадрат высоты человека в метрах
+// вес и высота будет переданы как строки, не всегда целые числа а разделены запятой.
+// индекс массы тела надо округлить до одной цифры после разделителя (запятой или точкой)
+
+const bmi = calcBMI("88,3", "1.75");
+
+function calcBMI(weight, height) {
+  weight = Number(weight.replace(",", "."));
+  height = Number(height.replace(",", "."));
+
+  // console.log(weight);
+  // height = Math.pow(height, 2);
+  // console.log(height);
+
+  // let result = weight / height;
+  // return result.toFixed(1);
+
+  // но лучше одной строкой без дополнительных переменных
+  return Number((weight / height ** 2).toFixed(1));
 }
+
+console.log(bmi);
