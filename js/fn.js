@@ -401,21 +401,272 @@
 // вес и высота будет переданы как строки, не всегда целые числа а разделены запятой.
 // индекс массы тела надо округлить до одной цифры после разделителя (запятой или точкой)
 
-const bmi = calcBMI("88,3", "1.75");
+// const bmi = calcBMI("88,3", "1.75");
 
-function calcBMI(weight, height) {
-  weight = Number(weight.replace(",", "."));
-  height = Number(height.replace(",", "."));
+// function calcBMI(weight, height) {
+//   weight = Number(weight.replace(",", "."));
+//   height = Number(height.replace(",", "."));
 
-  // console.log(weight);
-  // height = Math.pow(height, 2);
-  // console.log(height);
+//   // console.log(weight);
+//   // height = Math.pow(height, 2);
+//   // console.log(height);
 
-  // let result = weight / height;
-  // return result.toFixed(1);
+//   // let result = weight / height;
+//   // return result.toFixed(1);
 
-  // но лучше одной строкой без дополнительных переменных
-  return Number((weight / height ** 2).toFixed(1));
+//   // но лучше одной строкой без дополнительных переменных
+//   return Number((weight / height ** 2).toFixed(1));
+// }
+
+// console.log(bmi);
+
+// function example 2 - возвращает наименьшее число
+// напиши функицю min(a,b) которое возвращает наименьшее число из a и b
+//
+
+// function min(a, b) {
+//   // if (a < b) {
+//   //   return a;
+//   // }
+//   // return b;
+//   return a > b ? b : a;
+// }
+
+// console.log(min(1, 15));
+// console.log(min(1, -11));
+// console.log(min(52, 24));
+
+// function example 3 - площадь прямоугольника
+// напиши функицю getRectArea(dimensions) для вычисления площади сторон треугольника со сторонами,\
+// значения будут предаваться в парамент в виде строки
+// значения гарантировано разделены пробелом
+//
+
+// function getRectArea(dimensions) {
+//   dimensions = Array.from(dimensions.split(" "));
+//   return Number(dimensions[0] * dimensions[1]);
+// }
+
+// console.log(getRectArea("8 11"));
+
+// function example 4 - логирование элементов
+// напиши функицю logItems(items), которая получает массив и использует цикл for который для каждого элемента
+// выводит в консоль сообщение в формате номер_элемента - значение_элемента
+// нумерация наичнается с 1
+
+// function logItems(items) {
+//   for (let i = 0, num = 1; i < items.length; i += 1, num += 1) {
+//     console.log(`${num} : ${items[i]}`);
+//   }
+// }
+
+// console.log(logItems(["apple", "orange", "lemon", "apricot", "peach"]));
+// console.log(logItems(["Jacob", "Maria", "Ruben", "Aleksandr"]));
+
+// function example 5 - логирование контактов
+// напиши функцию, printContactsInfo(names, phones) которая выводит в консоль имя и телеыон пользователя
+// в параметры names будет переданы строки имен и телефонных номеров, разделенные запятыми
+// порядковый номер имен и телефонов отвечают за соответсвие
+//кол-во имен и телефонов одинаковая
+
+// function printContactsInfo(names, phones) {
+//   names = names.split(",");
+//   // console.log(names);
+//   phones = phones.split(",");
+//   // console.log(phones);
+
+//   for (let i = 0; i < names.length, i < phones.length; i += 1) {
+//     console.log(`${names[i]} - ${phones[i]}`);
+//   }
+// }
+
+// console.log(
+//   printContactsInfo(
+//     "Jacob,Maria,Ruben,Aleksandr",
+//     "14718960932,12507914080,16281820195,11948218654"
+//   )
+// );
+
+// function example 6 - поиск наибольшего элемента
+// напиши функцию findLargestNumber(numbers), которая ищет наибольшее чиcло среди переданных чисел
+// если не знаем сколько значений будет передано в arguments, лучше оставлять скобки пустыми, если мы указываем там (numbers) тогда даже если передали много значений функция видит только первое значение
+
+// function findLargestNumber() {
+//   //в (...args) - в данном случае мы сразу передаем что мы не знаем сколько будет аргументов
+//   let numbers = Array.from(arguments);
+//   // console.log(numbers);
+
+//   let max = numbers[0];
+//   for (let i = 0; i < numbers.length; i += 1) {
+//     // console.log(numbers[i]);
+//     if (numbers[i] > max) {
+//       max = numbers[i];
+//     }
+//   }
+//   return max;
+// }
+
+// console.log(findLargestNumber(2, 17, 94, 1, 23, 37, -55, 155));
+// console.log(findLargestNumber(49, 4, 7, 83, 12));
+
+// а если в первый индекс нам может приходиь массив
+// магия
+// function findLargestNumber() {
+//   let max;
+
+//   for (const num of arguments) {
+//     if (typeof num === "number") {
+//       max = num;
+//       break; // прерываем цикл потому что мы нашли что искали
+//     }
+//   }
+
+//   for (const num of arguments) {
+//     if (typeof num === "number") {
+//       if (num > max) {
+//         max = num;
+//       }
+//     } else {
+//       max = findLargestNumber(...num); // напиши в max резульат нашей функции и распыли наш массив (...num)
+//     }
+//   }
+//   return max;
+// }
+
+// console.log(
+//   findLargestNumber([
+//     1,
+//     143,
+//     [111, [152, [425, 52, 1, 5], 52], 2, 3],
+//     49,
+//     4,
+//     7,
+//     83,
+//     12,
+//   ])
+// );
+
+// function example 7 - среднее значение
+// напиши функцию calAverage() {} котрая принимает любое кол-во аргументов и возвращает среднее значение
+// все аргусменты это числа
+// это мой вариант
+// function calAverage() {
+//   let arr = Array.from(arguments);
+//   let sum = 0;
+//   let result;
+
+//   for (let i = 0; i < arr.length; i += 1) {
+//     sum += arr[i];
+//     result = sum / arr.length;
+//   }
+
+//   return result;
+//   // console.log(sum);
+// }
+
+// console.log(calAverage(1, 2, 3, 4));
+// console.log(calAverage(14, 8, 2));
+// console.log(calAverage(27, 43, 2, 8, 36));
+
+// это было расписано лектором
+// function calAverage() {
+//   let total = 0;
+//   for (const num of arguments) {
+//     total += num;
+//   }
+//   return total / arguments.length;
+// }
+
+// console.log(calAverage(1, 2, 3, 4));
+// console.log(calAverage(14, 8, 2));
+// console.log(calAverage(27, 43, 2, 8, 36));
+
+// function example 8 - форматирование времени
+// напиши функцию formatTime(minutes) {} котрая переведет кол-во минут в строку кол-во часов и кол-во минут HH : MM
+//
+
+// let hours;
+// let minutes;
+
+// function formatTime(minutes) {
+//   let totalMinutes = minutes;
+//   // console.log(typeof minutes);
+//   hours = Math.floor(totalMinutes / 60);
+
+//   const doubleDigitHours = String(hours).padStart(2, 0);
+//   // console.log(typeof hours);
+//   minutes = totalMinutes % 60;
+//   const doubleDigitMinutes = String(minutes).padStart(2, 0);
+//   // console.log(typeof minutes);
+//   return `${doubleDigitHours}:${doubleDigitMinutes}`;
+
+//   // либо использовать тут метод .toString().padStart(2, 0)
+// }
+
+// console.log(formatTime(70));
+// console.log(formatTime(450));
+// с(formatTime(1441));
+
+// function example 9 -коллекция курсов (includes, indexOf, push)
+// напиши функции для работы с коллекцией учебных курсов
+
+const courses = ["HTML", "CSS", "Js", "React", "PostgreSQL"];
+
+// addCourse(name) добавляет курс в конец коллекции
+
+// updateCourse(oldName, newName) изменяет имя на новое
+
+// если есть должно вывести в консоль "У вас уже есть этот курс"
+
+function addCourse(course) {
+  if (courses.includes(course)) {
+    return "У вас уже есть этот курс";
+  }
+  courses.push(course);
+
+  return `${course} добавлен в ваш список кусов`;
 }
 
-console.log(bmi);
+console.log(addCourse("Express"));
+console.log(courses);
+
+// removeCourse(name) удаляет курс из коллекции
+
+// function removeCourse(course) {
+//   // Мой первоначальный вариант
+//   // if (courses.includes(course)) {
+//   //   courses.splice(courses.indexOf(course), 1);
+//   //   console.log(`${course} удален из вашего списка курсов`);
+//   // } else {
+//   //   console.log(`${course} не найден в списке кусров`);
+//   // }
+
+//   // но лучше сделать
+//   let idx = courses.indexOf(course);
+//   // console.log(idx);
+
+//   if (!!~idx) {
+//     courses.splice(idx, 1);
+//     return "удален из вашего списка курсов";
+//   }
+
+//   return "такого курса не найдено";
+// }
+
+// console.log(removeCourse("CSS"));
+// console.log(courses);
+// console.log(removeCourse("Vue"));
+
+function updateCourse(oldName, newName) {
+  let idx = courses.indexOf(oldName);
+  if (!!~idx) {
+    courses.splice(idx, 1, newName);
+    return `${oldName} заменили на ${newName}`;
+  }
+
+  return "такого курса не найдено";
+}
+
+// console.log(updateCourse("Express", "NestJS"));
+// console.log(courses);
+//
