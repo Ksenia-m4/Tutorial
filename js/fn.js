@@ -618,17 +618,17 @@ const courses = ["HTML", "CSS", "Js", "React", "PostgreSQL"];
 
 // если есть должно вывести в консоль "У вас уже есть этот курс"
 
-function addCourse(course) {
-  if (courses.includes(course)) {
-    return "У вас уже есть этот курс";
-  }
-  courses.push(course);
+// function addCourse(course) {
+//   if (courses.includes(course)) {
+//     return "У вас уже есть этот курс";
+//   }
+//   courses.push(course);
 
-  return `${course} добавлен в ваш список кусов`;
-}
+//   return `${course} добавлен в ваш список кусов`;
+// }
 
-console.log(addCourse("Express"));
-console.log(courses);
+// console.log(addCourse("Express"));
+// console.log(courses);
 
 // removeCourse(name) удаляет курс из коллекции
 
@@ -657,16 +657,262 @@ console.log(courses);
 // console.log(courses);
 // console.log(removeCourse("Vue"));
 
-function updateCourse(oldName, newName) {
-  let idx = courses.indexOf(oldName);
-  if (!!~idx) {
-    courses.splice(idx, 1, newName);
-    return `${oldName} заменили на ${newName}`;
-  }
+// function updateCourse(oldName, newName) {
+//   let idx = courses.indexOf(oldName);
+//   if (!!~idx) {
+//     courses.splice(idx, 1, newName);
+//     return `${oldName} заменили на ${newName}`;
+//   }
 
-  return "такого курса не найдено";
-}
+//   return "такого курса не найдено";
+// }
 
 // console.log(updateCourse("Express", "NestJS"));
 // console.log(courses);
 //
+
+// function getDiscount(totalSpent) {
+//   const BASE_DISCOUNT = 0;
+//   const BRONZE_DISCOUNT = 0.02;
+//   const SILVER_DISCOUNT = 0.05;
+//   const GOLD_DISCOUNT = 0.1;
+//   let discount;
+//   // Change code below this line
+//   if (totalSpent < 5000) {
+//     discount = BASE_DISCOUNT;
+//   } else if (totalSpent >= 5000 && totalSpent < 20000) {
+//     discount = BRONZE_DISCOUNT;
+//   } else if (totalSpent >= 20000 && totalSpent < 50000) {
+//     discount = SILVER_DISCOUNT;
+//   } else if (totalSpent >= 50000) {
+//     discount = GOLD_DISCOUNT;
+//   }
+//   // Change code above this line
+//   return discount;
+// }
+
+// function checkStorage(available, ordered) {
+//   let message;
+//   // Change code below this line
+//   message =
+//     ordered > available
+//       ? "Not enough goods in stock!"
+//       : "The order is accepted, our manager will contact you";
+//   return message;
+//   // Change code above this line
+// }
+
+// console.log(checkStorage(100, 50));
+
+// function checkPassword(password) {
+//   const ADMIN_PASSWORD = "jqueryismyjam";
+//   let message;
+//   // Change code below this line
+//   message =
+//     password === "jqueryismyjam"
+//       ? "Access is allowed"
+//       : "Access denied, wrong password!";
+//   // Change code above this line
+//   return message;
+// }
+
+// console.log(checkPassword("jqueryismyjam"));
+// console.log(checkPassword("angul4r1sl1f3"));
+
+// function getSubscriptionPrice(type) {
+//   let price;
+//   // Change code below this line
+
+//   switch (
+//     type // Change this line
+//   ) {
+//     case "starter": // Change this line
+//       price = 0; // Change this line
+//       break;
+
+//     case "professional": // Change this line
+//       price = 20; // Change this line
+//       break;
+
+//     case "organization": // Change this line
+//       price = 50; // Change this line
+//       break;
+//   }
+
+//   // Change code above this line
+//   return price;
+// }
+
+// console.log(getSubscriptionPrice("professional"));
+
+// function checkPassword(password) {
+//   const ADMIN_PASSWORD = "jqueryismyjam";
+//   let message;
+//   // Change code below this line
+
+//   switch (password) {
+//     case null:
+//       message = "Canceled by user!";
+//       break;
+
+//     case ADMIN_PASSWORD:
+//       message = "Welcome!";
+//       break;
+
+//     default:
+//       message = "Access denied, wrong password!";
+//   }
+
+//   // Change code above this line
+//   return message;
+// }
+
+// console.log(checkPassword("mangohackzor"));
+
+// Формат возвращаемой строки "Shipping to <country> will cost <price> credits", где вместо <country> и <price> необходимо подставить соотвествующие значения.
+// Список стран и стоимость доставки:
+
+// China - 100 кредитов
+// Chile - 250 кредитов
+// Australia - 170 кредитов
+// Jamaica - 120 кредитов
+// Из списка видно, что доставка есть не везде. Если указанной страны нет в списке, то функция должна вернуть строку "Sorry, there is no delivery to your country"
+
+// function getShippingCost(country) {
+//   let message;
+//   let price;
+//   // Change code below this line
+//   switch (country) {
+//     case "China":
+//       price = 100;
+//       message = `Shipping to ${country} will cost ${price} credits`;
+//       break;
+
+//     case "Chile":
+//       price = 250;
+//       message = `Shipping to ${country} will cost ${price} credits`;
+//       break;
+
+//     case "Australia":
+//       price = 170;
+//       message = `Shipping to ${country} will cost ${price} credits`;
+//       break;
+
+//     case "Jamaica":
+//       price = 120;
+//       message = `Shipping to ${country} will cost ${price} credits`;
+//       break;
+
+//     default:
+//       message = "Sorry, there is no delivery to your country";
+//   }
+//   // Change code above this line
+//   return message;
+// }
+
+// console.log(getShippingCost("China"));
+// console.log(getShippingCost("Germany"));
+// console.log(getShippingCost("China"));
+
+// Дополни код функции так, что если длина строки:
+// не превышает maxLength, функция возвращает её в исходном виде.
+// больше maxLength, то функция обрезает строку до maxLength символов и добавляет в конец троеточие "...", после чего возвращает укороченную версию.
+
+// function formatMessage(message, maxLength) {
+//   let result;
+//   // Change code below this line
+//   // console.log(message);
+//   // console.log(message.length);
+//   // console.log(maxLength);
+
+//   result =
+//     message.length <= maxLength ? message : `${message.slice(0, maxLength)}...`;
+
+//   /// Change code above this line
+//   return result;
+// }
+
+// console.log(formatMessage("Curabitur ligula sapien", 16));
+// console.log(formatMessage("Curabitur ligula sapien", 23));
+// console.log(formatMessage("Vestibulum facilisis purus nec", 20));
+// console.log(formatMessage("Vestibulum facilisis purus nec", 30));
+// console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15));
+// console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41));
+
+// Функция checkForSpam(message) принимает строку (параметр message), проверяет её на содержание запрещенных слов spam и sale, и возвращает результат проверки. Слова в строке параметра message могут быть в произвольном регистре, например SPAM или sAlE.
+
+// Если нашли запрещенное слово (spam или sale) то функция возвращает буль true.
+// Если в строке нет запрещенных слов, функция возвращает буль false.
+
+// function checkForSpam(message) {
+//   let result;
+//   // Change code below this line
+//   message = message.toLowerCase();
+//   result = message.includes("spam") || message.includes("sale");
+
+//   // Change code above this line
+//   return result;
+// }
+
+// console.log(checkForSpam("Get best sale offers now!"));
+// console.log(checkForSpam("Amazing SalE, only tonight!"));
+
+// function checkAge(age) {
+//   let message;
+
+//   if (age >= 18) {
+//     message = "Вы совершеннолетний человек";
+//   } else {
+//     message = "Вы не совершеннолетний человек";
+//   }
+
+//   return message;
+// }
+
+// Функция checkPassword получает пароль пользователя в параметр password, проверяет его на совпадение с паролем администратора в переменной ADMIN_PASSWORD и возвращает сообщение о результате сравнения.
+
+// Проведи рефакторинг кода функции checkPassword используя паттерн «ранний возврат»:
+
+// удали переменную message
+// удали else
+// код должен работать так же, как и до оптимизации
+
+// function checkPassword(password) {
+//   const ADMIN_PASSWORD = "jqueryismyjam";
+//   // Change code below this line;
+
+//   if (password === ADMIN_PASSWORD) {
+//     return "Welcome!";
+//   }
+//   return "Access denied, wrong password!";
+
+//   // Change code above this line
+// }
+
+// Функция checkStorage проверяет возможность оформления заказа и возвращает сообщение о результате.
+// Она принимает два параметра, значения которых будут задаваться во время её вызова.
+
+// available - доступное количество товаров на складе
+// ordered - количество единиц товара в заказе
+// Проведи рефакторинг кода функции checkStorage используя паттерн «ранний возврат».
+
+function checkStorage(available, ordered) {
+  // Change code below this line
+
+  if (ordered === 0) {
+    return "Your order is empty!";
+  } else if (ordered > available) {
+    return "Your order is too large, not enough goods in stock!";
+  }
+  return "The order is accepted, our manager will contact you";
+
+  // Change code above this line
+}
+
+console.log(checkStorage(100, 50));
+console.log(checkStorage(100, 130));
+console.log(checkStorage(70, 0));
+console.log(checkStorage(200, 20));
+console.log(checkStorage(200, 250));
+console.log(checkStorage(150, 0));
+console.log();
