@@ -896,23 +896,311 @@ const courses = ["HTML", "CSS", "Js", "React", "PostgreSQL"];
 // ordered - количество единиц товара в заказе
 // Проведи рефакторинг кода функции checkStorage используя паттерн «ранний возврат».
 
-function checkStorage(available, ordered) {
-  // Change code below this line
+// function checkStorage(available, ordered) {
+//   // Change code below this line
 
-  if (ordered === 0) {
-    return "Your order is empty!";
-  } else if (ordered > available) {
-    return "Your order is too large, not enough goods in stock!";
-  }
-  return "The order is accepted, our manager will contact you";
+//   if (ordered === 0) {
+//     return "Your order is empty!";
+//   } else if (ordered > available) {
+//     return "Your order is too large, not enough goods in stock!";
+//   }
+//   return "The order is accepted, our manager will contact you";
 
-  // Change code above this line
-}
+//   // Change code above this line
+// }
 
-console.log(checkStorage(100, 50));
-console.log(checkStorage(100, 130));
-console.log(checkStorage(70, 0));
-console.log(checkStorage(200, 20));
-console.log(checkStorage(200, 250));
-console.log(checkStorage(150, 0));
-console.log();
+// console.log(checkStorage(100, 50));
+// console.log(checkStorage(100, 130));
+// console.log(checkStorage(70, 0));
+// console.log(checkStorage(200, 20));
+// console.log(checkStorage(200, 250));
+// console.log(checkStorage(150, 0));
+
+// function getExtremeElements(array) {
+//   // Change code below this line
+//   const lastElement = array[array.length - 1];
+
+//   return [array[0], lastElement];
+
+//   // Change code above this line
+// }
+
+// console.log(getExtremeElements([1, 2, 3, 4, 5]));
+// console.log();
+
+// function splitMessage(message, delimiter) {
+//   let words;
+//   // Change code below this line
+//   words = message.split(delimiter);
+//   // Change code above this line
+//   return words;
+// }
+
+// console.log(splitMessage("Mango hurries to the train", " "));
+// console.log(splitMessage("Mango", ""));
+// console.log();
+
+// Сервису гравировки украшений нужна функция, которая бы автоматически считала цену гравировки, в зависимости от количества слов и цены за слово.
+// Объявлена функция calculateEngravingPrice(message, pricePerWord). Эта функция принимает строку, состоящую из слов разделённых только пробелами (параметр message) и цену гравировки одного слова (параметр pricePerWord).
+
+// Напиши тело функции, чтобы она возвращала общую стоимость гравировки всех слов в строке.
+
+// function calculateEngravingPrice(message, pricePerWord) {
+//   // Change code below this line
+//   let words = message.split(" ");
+//   return words.length * pricePerWord;
+//   // Change code above this line
+// }
+
+// console.log(calculateEngravingPrice("JavaScript is in my blood", 10));
+
+// Напиши функцию slugify(title) которая принимает заголовок статьи, параметр title, и возвращает slug, созданный из этой строки.
+// Значением параметра title будут строки, слова которых разделены только пробелами
+// Все символы slug должны быть в нижнем регистре
+// Все слова slug должна быть разделены тире
+
+// function slugify(title) {
+//   // Change code below this line
+
+//   return title.toLowerCase().split(" ").join("-");
+
+//   // Change code above this line
+// }
+
+// // Вызов slugify("Arrays for begginers") возвращает "arrays-for-begginers"
+
+// console.log(slugify("Arrays for begginers"));
+// console.log();
+
+// const fruits = ["apple", "plum", "pear", "orange", "banana"];
+
+// // Change code below this line
+// const firstTwoEls = fruits.slice(0, 2);
+// const nonExtremeEls = fruits.slice(1, 4);
+// const lastThreeEls = fruits.slice(-3);
+
+// // Значение переменной lastThreeEls это массив ["pear", "orange", "banana"]
+// console.log(firstTwoEls);
+
+// Напиши функцию makeArray(firstArray, secondArray, maxLength) для создания нового массива со всеми элементами двух исходных firstArray и secondArray. Параметр maxLength содержит максимально допустимую длину нового массива.
+
+// Если количество элементов нового массива больше maxLength, функция должна вернуть копию массива длиной maxLength элементов. В противном случае функция должна вернуть новый массив целиком.
+// Объявлена функция makeArray(firstArray, secondArray, maxLength)
+
+// function makeArray(firstArray, secondArray, maxLength) {
+//   // Change code below this line
+//   let makeArray;
+//   makeArray = firstArray.concat(secondArray);
+
+//   return makeArray.slice(0, maxLength);
+
+//   // Change code above this line
+// }
+
+// console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3));
+
+// Вызов makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3) возвращает ["Mango", "Poly", "Ajax"]
+
+// Напиши функцию calculateTotal(number), которая принимает целое число (параметр number) и возвращает сумму всех целых чисел от единицы и до этого числа. Например, если number равно 3, то сумма это 1 + 2 + 3, то есть 6.
+
+// function calculateTotal(number) {
+//   // Change code below this line
+//   let result = 0;
+//   for (let i = 0; i <= number; i += 1) {
+//     result += i;
+//   }
+
+//   return result;
+
+//   // Change code above this line
+// }
+
+// console.log(calculateTotal(1));
+// console.log(calculateTotal(3));
+// console.log(calculateTotal(7));
+// console.log();
+
+// Вызов функции calculateTotal(1) возвращает 1
+// Вызов функции calculateTotal(3) возвращает 6
+// Вызов функции  возвращает 28
+
+// const fruits = ["apple", "plum", "pear", "orange"];
+
+// for (let i = 0; i < fruits.length; i += 1) {
+//   const fruit = fruits[i]; // Change this line
+//   console.log(fruit);
+// }
+
+// Напиши функцию calculateTotalPrice(order), которая принимает один параметр order - массив чисел, и рассчитывает общую сумму его элементов. Общая сумма элементов должна сохраняться в переменной total, которая возвращается, как результат работы функции.
+
+// function calculateTotalPrice(order) {
+//   let total = 0;
+//   // Change code below this line
+//   for (let i = 0; i < order.length; i += 1) {
+//     total += order[i];
+//   }
+//   // Change code above this line
+//   return total;
+// }
+
+// console.log(calculateTotalPrice([12, 85, 37, 4]));
+// console.log(calculateTotalPrice([164, 48, 291]));
+
+// Вызов функции calculateTotalPrice([12, 85, 37, 4]) возвращает 138
+// Вызов функции calculateTotalPrice([164, 48, 291]) возвращает 503
+
+// Напиши функцию findLongestWord(string) которая принимает произвольную строку состоящую только из слов разделённых пробелом (параметр string) и возвращает самое длинное слово в этой строке.
+
+// function findLongestWord(string) {
+//   // Change code below this line
+//   let arr = string.split(" ");
+//   // console.log(arr);
+//   let longestWord = arr[0];
+//   let maxlength = 0;
+//   // console.log(max);
+
+//   for (let i = 0; i < arr.length; i += 1) {
+//     let word = arr[i];
+//     // console.log(word.length);
+//     if (word.length > maxlength) {
+//       maxlength = word.length;
+//       longestWord = word;
+//     }
+//   }
+
+//   return longestWord;
+// }
+// // Change code above this line
+
+// console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
+// console.log(findLongestWord("Google do a roll"));
+// console.log(findLongestWord("May the force be with you"));
+// console.log();
+
+// Дополни код функции createArrayOfNumbers(min, max) так, чтобы она возвращала массив всех целых чисел от значения min до max.
+
+// function createArrayOfNumbers(min, max) {
+//   const numbers = [];
+//   // Change code below this line
+//   // numbers.push(min);
+
+//   for (let i = min - 1; i < max; i += 1) {
+//     numbers.push(i + 1);
+//   }
+
+//   // Change code above this line
+//   return numbers;
+// }
+
+// // console.log();
+
+// console.log(createArrayOfNumbers(1, 3));
+// console.log(createArrayOfNumbers(14, 17));
+// console.log(createArrayOfNumbers(29, 34));
+// console.log();
+
+// Вызов функции createArrayOfNumbers(1, 3) возвращает [1, 2, 3]
+// Вызов функции createArrayOfNumbers(14, 17) возвращает [14, 15, 16, 17]
+// Вызов функции createArrayOfNumbers(29, 34) возвращает [29, 30, 31, 32, 33, 34]
+//
+
+// Напиши функцию filterArray(numbers, value), которая принимает массив чисел (параметр numbers) и возвращает новый массив, в котором будут только те элементы массива numbers, которые больше чем значение параметра value (число).
+
+// function filterArray(numbers, value) {
+//   // Change code below this line
+//   let arr = [];
+
+//   for (let i = 0; i < numbers.length; i += 1) {
+//     if (numbers[i] > value) {
+//       arr.push(numbers[i]);
+//     }
+//   }
+
+//   return arr;
+//   // Change code above this line
+// }
+
+// console.log(filterArray([1, 2, 3, 4, 5], 3));
+// console.log(filterArray([1, 2, 3, 4, 5], 4));
+// console.log(filterArray([1, 2, 3, 4, 5], 5));
+
+// console.log(filterArray([12, 24, 8, 41, 76], 38));
+// console.log(filterArray([12, 24, 8, 41, 76], 20));
+
+// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5]
+// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5]
+// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает []
+// Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает [41, 76]
+// Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает [24, 41, 76]
+
+// Общими элементами массивов называют те элементы, которые присутствуют во всех массивах.
+
+// Например, в двух массивах [1, 3, 5] и [0, 8, 5, 3] общими будут числа 3 и 5, т.к. они присутствуют в обоих исходных массивах. А числа 0, 1 и 8 присутствуют только в одном из массивов.
+
+// Напиши функцию getCommonElements(array1, array2) которая получает два массива произвольной длины в параметры array1 и array2, и возвращает новый массив, состоящий из тех элементов, которые присутствуют в обоих исходных массивах.
+
+// function getCommonElements(array1, array2) {
+//   // Change code below this line
+//   let commonArray = [];
+//   for (let i = 0; i < array1.length; i += 1) {
+//     if (array2.includes(array1[i])) {
+//       commonArray.push(array1[i]);
+//     }
+//   }
+//   return commonArray;
+
+//   // Change code above this line
+// }
+
+// console.log(getCommonElements([1, 2, 3], [2, 4]));
+// console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
+
+// Вызов getCommonElements([1, 2, 3], [2, 4]) возвращает [2]
+// Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19]) возвращает [1, 2]
+
+// Выполни рефакторинг кода функции calculateTotalPrice(order) заменив цикл for на for...of.
+
+// function calculateTotalPrice(order) {
+//   let total = 0;
+//   // Change code below this line
+
+//   for (const item of order) {
+//     total += item;
+//   }
+
+//   // Change code above this line
+//   return total;
+// }
+
+// console.log(calculateTotalPrice([12, 85, 37, 4]));
+// console.log(calculateTotalPrice([164, 48, 291]));
+// console.log();
+
+// Вызов функции calculateTotalPrice([12, 85, 37, 4]) возвращает 138
+// Вызов функции calculateTotalPrice([164, 48, 291]) возвращает 503
+
+// Выполни рефакторинг функции filterArray(numbers, value) заменив цикл for на for...of.
+
+// function filterArray(numbers, value) {
+//   // Change code below this line
+//   const filteredNumbers = [];
+
+//   for (const item of numbers) {
+//     if (item > value) {
+//       filteredNumbers.push(item);
+//     }
+//   }
+
+//   return filteredNumbers;
+//   // Change code above this line
+// }
+
+// console.log(filterArray([1, 2, 3, 4, 5], 3));
+// console.log(filterArray([1, 2, 3, 4, 5], 4));
+// console.log(filterArray([1, 2, 3, 4, 5], 5));
+
+// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5]
+// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5]
+// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает []
+// Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает [41, 76]
+// Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает [24, 41, 76]
