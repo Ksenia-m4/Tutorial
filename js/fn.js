@@ -1204,3 +1204,94 @@ const courses = ["HTML", "CSS", "Js", "React", "PostgreSQL"];
 // Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает []
 // Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает [41, 76]
 // Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает [24, 41, 76]
+
+// Напиши функцию getEvenNumbers(start, end) которая возвращает массив всех чётных чисел от start до end. Чётным считается число которое делится на 2 без остатка (10 % 2 === 0).
+
+// function getEvenNumbers(start, end) {
+//   // Change code below this line
+
+//   let evenNumbers = [];
+
+//   for (let i = start; i <= end; i += 1) {
+//     if (i % 2 === 0) {
+//       evenNumbers.push(i);
+//     }
+//   }
+
+//   return evenNumbers;
+//   // Change code above this line
+// }
+
+// console.log(getEvenNumbers(2, 5));
+// console.log(getEvenNumbers(3, 11));
+// console.log(getEvenNumbers(6, 12));
+// console.log(getEvenNumbers(8, 8));
+// console.log(getEvenNumbers(7, 7));
+
+// Объявлена функция getEvenNumbers(start, end)
+// Вызов функции getEvenNumbers(2, 5) возвращает [2, 4]
+// Вызов функции getEvenNumbers(3, 11) возвращает [4, 6, 8, 10]
+// Вызов функции getEvenNumbers(6, 12) возвращает [6, 8, 10, 12]
+// Вызов функции getEvenNumbers(8, 8) возвращает [8]
+// Вызов функции getEvenNumbers(7, 7) возвращает []
+// Вызов функции getEvenNumbers() со случайными start и end возвращает правильный массив
+
+// Выполни рефакторинг функции findNumber(start, end, divisor) так, чтобы она:
+// возвращала первое число от start до end, которое делится на divisor без остатка
+// не использовала оператор break
+// не использовала переменную number
+
+// function findNumber(start, end, divisor) {
+//   // Change code below this line
+//   let number;
+
+//   for (let i = start; i < end; i += 1) {
+//     if (i % divisor === 0) {
+//       return i;
+//     }
+//   }
+
+//   return number;
+//   // Change code above this line
+// }
+
+// Напиши функцию includes(array, value), которая делает тоже самое, что и метод массива массив.includes(значение) - проверяет, есть ли в массиве array значение value, возвращая true если есть и false в противном случае.
+
+// При выполнении этой задачи в теле функции includes() нельзя использовать метод массив.includes(значение).
+
+// function includes(array, value) {
+//   // Change code below this line
+//   if (!!~array.indexOf(value)) {
+//     return true;
+//   }
+//   return false;
+
+//   // Change code above this line
+// }
+
+// function includes(array, value) {
+//   // Change code below this line
+//   for (let i = 0; i < array.length; i += 1) {
+//     if (array[i] === value) {
+//       return true;
+//     }
+//   }
+//   return false;
+//   // Change code above this line
+// }
+
+// console.log(includes([1, 2, 3, 4, 5], 3));
+// console.log(includes([1, 2, 3, 4, 5], 17));
+// console.log(
+//   includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter")
+// );
+
+// Объявлена функция includes(array, value)
+// Вызов includes([1, 2, 3, 4, 5], 3) возвращает true
+// Вызов includes([1, 2, 3, 4, 5], 17) возвращает false
+// Вызов includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter") возвращает true
+// Вызов includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus") возвращает false
+// Вызов includes(["apple", "plum", "pear", "orange"], "plum") возвращает true
+// Вызов includes(["apple", "plum", "pear", "orange"], "kiwi") возвращает false
+// Вызов includes() для случайного массива со случайным value возвращает верный boolean
+// В функции includes используется for, return, но не метод массива includes
