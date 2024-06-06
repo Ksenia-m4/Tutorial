@@ -1295,3 +1295,5 @@ const courses = ["HTML", "CSS", "Js", "React", "PostgreSQL"];
 // Вызов includes(["apple", "plum", "pear", "orange"], "kiwi") возвращает false
 // Вызов includes() для случайного массива со случайным value возвращает верный boolean
 // В функции includes используется for, return, но не метод массива includes
+
+
