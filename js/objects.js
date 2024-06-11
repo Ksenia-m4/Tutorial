@@ -193,32 +193,114 @@
  * каждая транзакция это обьект со свойствами id,type, amount
  */
 
-// const Transaction = {
-//   DEPOSIT: "deposit",
-//   WITHDRAW: "withdraw",
-// };
+//тут список транзаций которые используются это положить и снять деньги
+/* каждая транзакция это {объект}  со свойствами id,type, amount
+ */
+
+const Transaction = {
+  DEPOSIT: "deposit",
+  WITHDRAW: "withdraw",
+};
+
+// заморозить изменения значений ключей можно так
+// Object.freeze(Transaction);
+// Transaction.DEPOSIT = "zhzhzfdfd";
+// console.log(Transaction);
 
 const account = {
-  // текущий баланс
+  // текущий баланс счета
   balance: 0,
-  // история транзаций
-  transaction: [],
+  // а тут хранится история транзаций, объект со свойствами id,type, amount
+  transactions: [{ id: 16, amount: 150, type: "withdraw" }],
 
-  // метод создает и возвращает объект транзации. принимает сумму и тип транзакции.
+  // метод, который создает и возвращает объект транзации
+  // принимает сумму и тип транзации
   createTransaction(amount, type) {
     return {
       id: Date.now(),
-      type,
       amount,
+      type,
     };
   },
 
-  //  метод который отвечает за добавление суммы в балланс
-  // принимает сумму транзакции. Вызывает createTransaction для создания обьекта транзации
-  // после чего добавляет его в историю транзакции
-  deposit(amount) {},
+  // метод, который отвечает за добавление суммы в балланс
+  // принимает сумму транзакции
+  // вызывает createTransaction для создания объекта трвнзакции
+  //  а после этого, добавляет его до истории транзации
+  deposit(amount) {
+    if (amount <= 0) {
+      return "Error"; //проверяем не пришла ли сумма отрицательная, это невозможная операция, поэтому пишем ошибку на первой итерации
+    }
+    const item = this.createTransaction(amount, Transaction.DEPOSIT); // будет добавляться результат вызова метода createTransaction
+    // console.log(item); // после того как мы получили результат транзации мы должны переложить его в историю транзакций
+    this.transactions.push(item);
+    this.balance += amount;
+  },
+  /*
+   * Метод, що відповідає за зняття суми з балансу.
+   * Приймає суму транзакції.
+   * Викликає createTransaction для створення об'єкта транзакції
+   * Після чого додає його в історію транзакцій.
+   *
+   * Якщо amount більше ніж поточний баланс, виводь повідомлення
+   * про те, що зняття такої суми не можливе, недостатньо коштів.
+   */
+  withdraw(amount) {
+    if (amount <= 0 || amount > this.balance) {
+      return "зняття такої суми не можливе, недостатньо коштів"; // лучше всего начинать с того, что обработаем все ошибки такие как например недостаточно денег на счету или введен 0 или число с минусом
+    }
+    const item = this.createTransaction(amount, Transaction.WITHDRAW);
+    this.balance -= amount;
+    this.transactions.push(item);
+    // console.log(amount);
+  },
 
-  //
+  /*
+   * Метод повертає поточний баланс
+   */
+  getBalance() {
+    return this.balance;
+  },
+
+  /*
+   * Метод шукає та повертає об'єкт транзації по id
+   */
+  getTransactionDetails(id) {
+    for (const transaction of this.transactions) {
+      if (id === transaction.id) {
+        return transaction;
+      }
+    }
+    return "нет такого";
+  },
+
+  /*
+   * Метод повертає кількість коштів
+   * певного типу транзакції з усієї історії транзакцій
+   */
+  getTransactionTotal(type) {
+    let sum = 0;
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        sum += transaction.amount;
+        // console.log("deposit");
+      }
+    }
+    return sum;
+  },
 };
 
-console.log(account.createTransaction(1000, "deposit"));
+// console.log(account.createTransaction(1000, "deposit"));
+account.deposit(1000);
+account.deposit(50);
+account.withdraw(150);
+
+// console.log(account.withdraw(15000)); // проверка на сумму большую чем состояние баланса
+
+// console.log(account.deposit(0));
+// console.log(account);
+// console.log(account.getBalance());
+// console.log(account.getTransactionDetails(16));
+// console.log(account.getTransactionDetails(17)); // ложное значение if
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));
