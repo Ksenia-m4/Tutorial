@@ -71,7 +71,7 @@
 
 // // console.log(students);
 // const allCourses = students.flatMap((student) => student.courses); // Это идентично map функции, с последующим применением функции flat с параметром depth ( глубина ) равным 1
-// // console.log(allCourses);
+// console.log(allCourses);
 
 // // const uniqueCourses = allCourses.filter(
 // //   (course, index, array) => array.indexOf(course) === index
@@ -144,13 +144,13 @@
 // );
 // console.log(totalScore);
 
-const tweets = [
-  { id: "000", likes: 5, tags: ["js", "nodejs"] },
-  { id: "001", likes: 2, tags: ["html", "css"] },
-  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-  { id: "003", likes: 8, tags: ["css", "react"] },
-  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-];
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
 
 // const allTags = tweets.reduce((tags, tweet) => {
 //   tags.push(...tweet.tags); // каждый из элементов массива распыляем в аргумент метода push и он пушится каждый отдельно // линетры не любят когда идет мутация кода, т.е перезаписывание изначальных данных
@@ -158,10 +158,10 @@ const tweets = [
 // }, []); //  в отличие от предыдущих примеров, в первоначальное значение аккумулятора тут значение пустой массив
 // console.log(allTags);
 
-const allTags = tweets.reduce((tags, tweet) => {
-  return [...tags, ...tweet.tags]; // чтобы избежать изменения через пуш, можно распылить вначале старые теги и добавить новые и собрать опять в массив. фактически мы создаем массив, на каждой итерации мы добавялем в него распыленный массив аккумулятора и распыленные теги из текущей итерации и заново собираем в массив
-}, []);
-console.log(allTags);
+// const allTags = tweets.reduce((tags, tweet) => {
+//   return [...tags, ...tweet.tags]; // чтобы избежать изменения через пуш, можно распылить вначале старые теги и добавить новые и собрать опять в массив. фактически мы создаем массив, на каждой итерации мы добавялем в него распыленный массив аккумулятора и распыленные теги из текущей итерации и заново собираем в массив
+// }, []);
+// console.log(allTags);
 
 // а теперь нужно получить что-то типа такого
 // {
@@ -223,3 +223,54 @@ console.log(allTags);
 // );
 
 // console.log(uniqueTags);
+
+//arr.sort([compareFunction])
+// .sort(callback(currentEl, nextEl){})
+// Сортирует и изменяет исходный массив.
+// Возвращает измененный массив, то есть ссылку на отсортированный выходной.
+// По умолчанию сортирует по возростанию
+// Сортировка производится путем приведения значений к строке и сравнения порядковых номеров в таблице Unicode.
+// если нам не подходит по возростанию, надо передавать callbackfn compareFunction
+
+// массив.sort((a, b) => {
+//   // Тіло колбек-функції
+// });
+// a– первый элемент для сравнения.
+// b– второй элемент для сравнения.
+
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort((curEl, nextEl) => curEl - nextEl); // числа будут отображены по возростанию
+
+// // console.log(ascendingScores);
+
+// const descendingScores = [...scores].sort((curEl, nextEl) => nextEl - curEl); // числа будут отображены по убыванию
+// console.log(descendingScores);
+
+// const students = [
+//   { name: "Манго", score: 83 },
+//   { name: "Полі", score: 59 },
+//   { name: "Аякс", score: 37 },
+//   { name: "Ківі", score: 94 },
+// ];
+
+// const ascendingScores = [...students].sort(
+//   (curEl, nextEl) => curEl.score - nextEl.score
+// );
+// console.log(ascendingScores);
+
+// const descendingScores = [...students].sort(
+//   (curEl, nextEl) => nextEl.score - curEl.score
+// );
+// console.log(descendingScores);
+
+// const sortingByName = [...students].sort((prevEl, nextEl) => {
+//   if (prevEl.name[0] < nextEl.name[0]) {
+//     return -1;
+//   }
+//   return 0;
+// });
+// console.table(sortingByName);
+
+// .flat & .flatMap
+const arr = [1, 2, 3, [4, 5, 9, [7, 8, 9, 45], 4, 75, 45], 65, 58];
+// console.log(arr.flat(2));
