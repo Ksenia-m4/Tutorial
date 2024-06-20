@@ -235,8 +235,8 @@
 // массив.sort((a, b) => {
 //   // Тіло колбек-функції
 // });
-// a– первый элемент для сравнения.
-// b– второй элемент для сравнения.
+// a первый элемент для сравнения.
+// b второй элемент для сравнения.
 
 // const scores = [61, 19, 74, 35, 92, 56];
 // const ascendingScores = [...scores].sort((curEl, nextEl) => curEl - nextEl); // числа будут отображены по возростанию
@@ -272,5 +272,251 @@
 // console.table(sortingByName);
 
 // .flat & .flatMap
-const arr = [1, 2, 3, [4, 5, 9, [7, 8, 9, 45], 4, 75, 45], 65, 58];
+// const arr = [1, 2, 3, [4, 5, 9, [7, 8, 9, 45], 4, 75, 45], 65, 58];
 // console.log(arr.flat(2));
+
+// Example 1 - Коллбек функції
+// Напишіть такі функції:
+
+// createProduct(obj, callback) - приймає об'єкт товару без ID, а також колбек. Функція створює об'єкт товару, додаючи йому унікальний ідентифікатор як id і викликає колбек передаючи йому створений об'єкт.
+// logProduct(product) - коллбек, що приймає об'єкт продукту і логує його в консоль
+// logTotalPrice(product) - коллбек, що приймає об'єкт продукту і логує загальну вартість товару в консоль
+
+// function createProduct(obj, callback) {
+//   const product = {
+//     id: Date.now(),
+//     ...obj,
+//   };
+//   callback(product);
+//   console.log(product);
+// }
+// function logProduct(obj) {
+//   console.log(`Product ${obj.name}`);
+// }
+// function logTotalPrice({ price, quantity }) {
+//   console.log(`Total price ${price * quantity}`);
+// }
+
+// createProduct(
+//   {
+//     name: "🍋",
+//     price: 20,
+//     quantity: 5,
+//   },
+//   logProduct
+// );
+// createProduct(
+//   {
+//     name: "🍎",
+//     price: 30,
+//     quantity: 3,
+//   },
+//   logTotalPrice
+// );
+
+// Example 2 - Коллбек функції
+
+// Додайте в об'єкт account  методи з записом
+// withdraw(amount,  onSuccess, onError) та deposit(amount, onSuccess, onError) де перший параметр це сума операції, а другий і третій - колбеки.
+// Метод withdraw викликає onError якщо amount більше TRANSACTION_LIMIT або this.balance та onSuccess в іншому випадку.
+// Метод deposit  викликає onError якщо amount більше TRANSACTION_LIMIT або меньше або дорівнює нулю, та onSuccess в іншому випадку.
+
+// const TRANSACTION_LIMIT = 1000;
+
+// const account = {
+//   username: "Jacob",
+//   balance: 400,
+//   withdraw(amount, onSuccess, onError) {
+//     // Метод withdraw викликає onError якщо amount більше TRANSACTION_LIMIT або this.balance та onSuccess в іншому випадку.
+//     if (amount > TRANSACTION_LIMIT) {
+//       onError(`Вы превысили лимит. Лимит ${TRANSACTION_LIMIT}`);
+//       return;
+//     } else if (amount > this.balance) {
+//       onError(`Недостаточно денег на счету. Ваш баланс ${this.balance}`);
+//       return;
+//     } else this.balance -= amount;
+//     onSuccess(
+//       `С вашего счета было снято ${amount} кредитов. Ваш баланс ${this.balance}`
+//     );
+//   },
+//   deposit(amount, onSuccess, onError) {
+//     // Метод deposit  викликає onError якщо amount більше TRANSACTION_LIMIT або меньше або дорівнює нулю, та onSuccess в іншому випадку.
+//     if (amount > TRANSACTION_LIMIT) {
+//       onError(`Вы превысили лимит. Лимит ${TRANSACTION_LIMIT}`);
+//       return;
+//     } else if (amount <= 0) {
+//       onError(`Ошибка операции`);
+//       return;
+//     }
+
+//     this.balance += amount;
+//     onSuccess(
+//       `На Ваш счет было засчитано ${amount} кредитов. Ваш баланс ${this.balance}`
+//     );
+//   },
+// };
+
+// function handleSuccess(message) {
+//   console.log(`Success! ${message}`);
+// }
+// function handleError(message) {
+//   console.log(`Error! ${message}`);
+// }
+
+// account.withdraw(2000, handleSuccess, handleError);
+// account.withdraw(800, handleSuccess, handleError);
+// account.withdraw(100, handleSuccess, handleError);
+
+// account.deposit(2000, handleSuccess, handleError);
+// account.deposit(0, handleSuccess, handleError);
+// account.deposit(-500, handleSuccess, handleError);
+// account.deposit(100, handleSuccess, handleError);
+
+// Example 3 - Коллбек функції
+// Напишіть функцію each(array, callback), яка першим параметром очікує масив, а другим - функцію, яка застосовується до кожного елемента масиву. Функція each повинна повернути новий масив, елементами якого будуть результати виклику колббека.
+
+// function each(array, callback) {
+//   for (const element of array) {
+//     console.log(callback(element));
+//   }
+// }
+// console.log(
+//   each([64, 49, 36, 25, 16], function (value) {
+//     return value * 2;
+//   })
+// );
+
+// Example 4 - Стрілочні функції
+// Виконайте рефакторинг коду за допомогою стрілочних функцій.
+
+// const createProduct = (obj, callback) => {
+//   const product = {
+//     id: Date.now(),
+//     ...obj,
+//   };
+//   callback(product);
+//   console.log(product);
+// };
+
+const createProduct = (obj, callback) => callback({ id: Date.now(), ...obj });
+
+// function logProduct(obj) {
+//   console.log(`Product ${obj.name}`);
+// }
+// переписали на стрелку
+const logProduct = (obj) => console.log(`Product ${obj.name}`);
+
+// function logTotalPrice({ price, quantity }) {
+//   console.log(`Total price ${price * quantity}`);
+// }
+// переписали на стрелку
+const logTotalPrice = ({ price, quantity }) =>
+  console.log(`Total price ${price * quantity}`);
+
+// createProduct(
+//   {
+//     name: "🍋",
+//     price: 20,
+//     quantity: 5,
+//   },
+//   logProduct
+// );
+// createProduct(
+//   {
+//     name: "🍎",
+//     price: 30,
+//     quantity: 3,
+//   },
+//   logTotalPrice
+// );
+
+// Example 5 - Стрілочні функції
+// Виконайте рефакторинг коду за допомогою стрілочних функцій.
+
+const TRANSACTION_LIMIT = 1000;
+
+const account = {
+  username: "Jacob",
+  balance: 400,
+  withdraw(amount, onSuccess, onError) {
+    // Метод withdraw викликає onError якщо amount більше TRANSACTION_LIMIT або this.balance та onSuccess в іншому випадку.
+    if (amount > TRANSACTION_LIMIT) {
+      onError(`Вы превысили лимит. Лимит ${TRANSACTION_LIMIT}`);
+      return;
+    } else if (amount > this.balance) {
+      onError(`Недостаточно денег на счету. Ваш баланс ${this.balance}`);
+      return;
+    } else this.balance -= amount;
+    onSuccess(
+      `С вашего счета было снято ${amount} кредитов. Ваш баланс ${this.balance}`
+    );
+  },
+  deposit(amount, onSuccess, onError) {
+    // Метод deposit  викликає onError якщо amount більше TRANSACTION_LIMIT або меньше або дорівнює нулю, та onSuccess в іншому випадку.
+    if (amount > TRANSACTION_LIMIT) {
+      onError(`Вы превысили лимит. Лимит ${TRANSACTION_LIMIT}`);
+      return;
+    } else if (amount <= 0) {
+      onError(`Ошибка операции`);
+      return;
+    }
+
+    this.balance += amount;
+    onSuccess(
+      `На Ваш счет было засчитано ${amount} кредитов. Ваш баланс ${this.balance}`
+    );
+  },
+};
+
+const handleSuccess = (message) => console.log(`Success! ${message}`);
+const handleError = (message) => console.log(`Error! ${message}`);
+
+// account.withdraw(2000, handleSuccess, handleError);
+// account.withdraw(800, handleSuccess, handleError);
+// account.withdraw(100, handleSuccess, handleError);
+
+// account.deposit(2000, handleSuccess, handleError);
+// account.deposit(0, handleSuccess, handleError);
+// account.deposit(-500, handleSuccess, handleError);
+// account.deposit(100, handleSuccess, handleError);
+
+// Example 5 - Стрілочні функції
+// Виконайте рефакторинг коду за допомогою стрілочних функцій.
+
+const each = (array, callback) => {
+  const newArr = [];
+  for (const element of array) {
+    newArr.push(callback(element));
+  }
+  return newArr;
+};
+
+// console.log(each([64, 49, 36, 25, 16], (value) => value * 2)); //инлайн колбэк
+
+// Example 6 - Метод forEach
+// Виконайте рефакторинг коду, використовуючи метод forEach і стрілочні функції.
+
+const logItems = (items) =>
+  items.forEach((item, idx) => console.log(`${idx + 1} - ${item}`));
+
+// logItems(["Mango", "Poly", "Ajax"]);
+// logItems(["🍎", "🍇", "🍑", "🍌", "🍋"]);
+
+// Example 7 - Метод forEach
+// Виконайте рефакторинг коду, використовуючи метод forEach і стрілочні функції.
+
+// function calculateAverage(...args) {
+//   let total = 0;
+//   for (let i = 0; i < args.length; i += 1) {
+//     total += args[i];
+//   }
+//   return total / args.length;
+// }
+
+const calculateAverage = (...arr) => {
+  let total = 0;
+  arr.forEach((item) => (total += item));
+  return total / arr.length;
+};
+
+console.log(calculateAverage(1, 2, 5, 8, 9, 4));
