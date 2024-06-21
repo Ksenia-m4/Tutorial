@@ -22,10 +22,10 @@
 //
 // .forEach()
 // const numbers = [5, 10, 15, 45, 78];
-// // Array.prototype.forEach()
-// // forEach(callbackFn, thisArg)
-// // thisArg - обьект, в контексте которого будет выполнена коллбэк функция
-// // callbackFn - function (number, index, array)
+// // // Array.prototype.forEach()
+// // // forEach(callbackFn, thisArg)
+// // // thisArg - обьект, в контексте которого будет выполнена коллбэк функция
+// // // callbackFn - function (number, index, array)
 
 // numbers.forEach(function (number, index, array) {
 //   // number - это элемент массива, forEach делает копию. если лежит примитив он создает копию. если сложный тип данных там лежит ссылка
@@ -144,13 +144,13 @@
 // );
 // console.log(totalScore);
 
-// const tweets = [
-//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
-//   { id: "001", likes: 2, tags: ["html", "css"] },
-//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-//   { id: "003", likes: 8, tags: ["css", "react"] },
-//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-// ];
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
 
 // const allTags = tweets.reduce((tags, tweet) => {
 //   tags.push(...tweet.tags); // каждый из элементов массива распыляем в аргумент метода push и он пушится каждый отдельно // линетры не любят когда идет мутация кода, т.е перезаписывание изначальных данных
@@ -471,7 +471,7 @@ const account = {
 const handleSuccess = (message) => console.log(`Success! ${message}`);
 const handleError = (message) => console.log(`Error! ${message}`);
 
-// account.withdraw(2000, handleSuccess, handleError);
+// account.withdraw(2000, handleSuccess, handleError); //  я в вызове функции передаю коллбэк и он передается как аргумент в функцию высшего порядка
 // account.withdraw(800, handleSuccess, handleError);
 // account.withdraw(100, handleSuccess, handleError);
 
@@ -519,4 +519,248 @@ const calculateAverage = (...arr) => {
   return total / arr.length;
 };
 
-console.log(calculateAverage(1, 2, 5, 8, 9, 4));
+// console.log(calculateAverage(1, 2, 5, 8, 9, 4));
+
+// ПЕРЕБИРАЮЩИЕ МЕТОДЫ МАССИВА
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
+const result = arr.map((item) => {
+  if (!(item % 2)) {
+    return item * 2;
+  }
+  return item;
+});
+// console.log(result);
+
+// Колекція об'єктів для всіх прикладів з автомобілями
+const cars = [
+  {
+    //a
+    make: "Honda",
+    model: "CR-V",
+    type: "suv",
+    amount: 14,
+    price: 24045,
+    onSale: true,
+  },
+  {
+    //b
+    make: "Honda",
+    model: "accord",
+    type: "sedan",
+    amount: 2,
+    price: 22455,
+    onSale: true,
+  },
+  {
+    make: "Honda",
+    model: "Accord",
+    type: "sedan",
+    amount: 2,
+    price: 22455,
+    onSale: true,
+  },
+  {
+    make: "Mazda",
+    model: "Mazda 6",
+    type: "sedan",
+    amount: 8,
+    price: 24195,
+    onSale: false,
+  },
+  {
+    make: "Mazda",
+    model: "CX-9",
+    type: "suv",
+    amount: 7,
+    price: 31520,
+    onSale: true,
+  },
+  {
+    make: "Toyota",
+    model: "4Runner",
+    type: "suv",
+    amount: 19,
+    price: 34210,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Sequoia",
+    type: "suv",
+    amount: 16,
+    price: 45560,
+    onSale: false,
+  },
+  {
+    make: "Toyota",
+    model: "Tacoma",
+    type: "truck",
+    amount: 4,
+    price: 24320,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "F-150",
+    type: "truck",
+    amount: 11,
+    price: 27110,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Fusion",
+    type: "sedan",
+    amount: 13,
+    price: 22120,
+    onSale: true,
+  },
+  {
+    make: "Ford",
+    model: "Explorer",
+    type: "suv",
+    amount: 6,
+    price: 31660,
+    onSale: false,
+  },
+];
+
+//   Example 1 - Метод map
+// Нехай функція getModels повертає масив моделей (поле моделі) всіх автомобілів.
+
+const getModels = cars.map((item) => item.model);
+// console.table(getModels);
+
+// Example 2 - Метод map
+// Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінeнним значенням властивості price залежно від переданої знижки (%).
+
+// это мой вариант
+// const discount = 5;
+// const makeCarsWithDiscount = cars.map(
+//   (item) => item.price * (1 - discount / 100)
+// );
+
+// console.log(makeCarsWithDiscount);
+
+// вариант с урока
+const makeCarsWithDiscount = (cars, discount) => {
+  console.table(cars);
+  return cars.map((item) => ({
+    ...item, // здесь важно помнить о приоритете, вначале распылили а потом переопределили значение price
+    price: item.price * (1 - discount),
+  }));
+};
+
+// console.table(makeCarsWithDiscount(cars, 0.2));
+// // console.log(makeCarsWithDiscount(cars, 0.4));
+
+// Example 3 - Метод filter
+// Нехай функція filterByPrice повертає масив автомобілів ціна яких менша за значення параметра threshold.
+
+const filterByPrice = (cars, threshold) => {
+  // console.table(cars);
+  return cars.filter((item) => item.price < threshold);
+};
+
+// console.table(filterByPrice(cars, 30000));
+// console.table(filterByPrice(cars, 25000));
+
+// Example 4 - Метод filter
+// Нехай функція getCarsWithDiscount повертає масив автомобілів властивість onSale яких true.
+
+const getCarsWithDiscount = (cars) => cars.filter((item) => item.onSale);
+
+// console.table(getCarsWithDiscount(cars));
+
+// Example 5 - Метод filter
+// Нехай функція getCarsWithType повертає масив автомобілів, тип яких збігається зі значенням параметра type.
+
+// const getCarsWithType = (cars, type) => cars.filter((car) => car.type === type);
+
+// console.table(getCarsWithType(cars, "truck"));
+
+// если с деструктуризацией и переменная переданная с функцией по названию такая же как и название ключа. тогда просто переименовывам название ключа
+const getCarsWithType = (cars, type) =>
+  cars.filter(({ type: carType }) => carType === type);
+
+// console.table(getCarsWithType(cars, "truck"));
+
+// // Example 6 - Метод find
+// getCarByModel ищет по модели, передает массив и модель
+
+const getCarByModel = (cars, model) => cars.find((car) => car.model === model);
+
+// console.log(getCarByModel(cars, "4Runner"));
+
+// Example 7 - Метод sort
+// Нехай функція sortByAscendingAmount повертає новий масив автомобілів відсортований за збільшенням значення властивості amount.
+
+const sortByAscendingAmount = (cars) => {
+  console.table(cars);
+  return [...cars].sort((a, b) => a.amount - b.amount); // мы не хотим все время сортировать оригинальный массив, поэтому вначале должны распылить объект через spread
+};
+// console.table(sortByAscendingAmount(cars));
+// console.table(cars);
+
+// Example 8 - Метод sort
+// Нехай функція sortByDescendingPrice повертає новий масив автомобілів, відсортований за зменшенням значення властивості price.
+const sortByDescendingPrice = (cars) =>
+  [...cars].sort((a, b) => b.price - a.price);
+
+// console.table(sortByDescendingPrice(cars));
+// console.table(cars);
+
+// Example 9 - Метод sort
+// Нехай функція sortByModel повертає новий масив автомобілів відсортований за назвою моделі в алфавітному та зворотньому алфавітному порядку, залежно від значення параметра order.
+
+// c урока
+const sortByModel = (cars, order) =>
+  [...cars].sort((a, b) =>
+    order === "alphabetical"
+      ? a.model.localeCompare(b.model)
+      : b.model.localeCompare(a.model)
+  );
+
+// console.table(sortByModel(cars, "alphabetical"));
+// console.table(sortByModel(cars, "inReverseOrder"));
+// console.table(cars);
+
+// Example 10 - Метод reduce
+// Нехай функція getTotalAmount повертає загальну кількість автомобілів (значення властивостей amount).
+
+// const getTotalAmount = (cars) => {
+//   const result = cars.reduce((totalAmount, { amount }) => {
+//     return totalAmount + amount;
+//   }, 0);
+//   return result;
+// };
+
+// console.log(getTotalAmount(cars));
+
+const getTotalAmount = (cars) =>
+  cars.reduce((acc, { amount }) => acc + amount, 0); // более лаконично
+
+// console.log(getTotalAmount(cars));
+
+// Example 11 - Ланцюжки методів
+// Нехай функція getAvailableCarNames повертає масив моделей автомобілів, але тільки тих, що зараз на розпродажі.
+
+// console.table(cars);
+
+const getAvailableCarNames = (cars) => {
+  return cars
+    .filter((car) => car.onSale)
+    .map(({ model, make }) => `${make} ${model}`);
+};
+
+// console.table(getAvailableCarNames(cars));
+
+// Example 12 - Ланцюжки методів
+// Нехай функція getSortedCarsOnSale повертає список автомобілів на розпродажі (властивість onSale), відсортованих за зростанням ціни.
+
+const getSortedCarsOnSale = (cars) => {
+  return cars.filter((car) => car.onSale).sort((a, b) => a.price - b.price);
+};
+
+// console.table(getSortedCarsOnSale(cars));
