@@ -820,16 +820,14 @@ const foo = (abc) => {
 const pizzaPalace = {
   pizzas: ["Ultracheese", "Smoked", "Four meats"],
   order(pizzaName, makePizza, onOrderError) {
-    if (this.pizzas.includes(pizzaName)) {
-      console.log(makePizza(pizzaName));
-      return;
+    for (const pizza of this.pizzas) {
+      if (pizza === pizzaName) {
+        return makePizza(pizzaName);
+      }
     }
-    console.log(
-      onOrderError(
-        `There is no pizza with a name ${pizzaName} in the assortment.`
-      )
+    return onOrderError(
+      `There is no pizza with a name ${pizzaName} in the assortment.`
     );
-    return;
   },
 };
 // Change code above this line
@@ -849,4 +847,3 @@ pizzaPalace.order("Smoked", makePizza, onOrderError);
 pizzaPalace.order("Four meats", makePizza, onOrderError);
 pizzaPalace.order("Big Mike", makePizza, onOrderError);
 pizzaPalace.order("Vienna", makePizza, onOrderError);
-
