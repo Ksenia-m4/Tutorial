@@ -74,7 +74,7 @@
 // console.log(allCourses);
 
 // // const uniqueCourses = allCourses.filter(
-// //   (course, index, array) => array.indexOf(course) === index
+// //   (course, index, array) => array.indexOf(course) === index // indexOf возвращает первый индекс который найдет в массиве
 // // );
 
 // const uniqueCourses = allCourses.filter((course, index, array) => {
@@ -764,3 +764,89 @@ const getSortedCarsOnSale = (cars) => {
 };
 
 // console.table(getSortedCarsOnSale(cars));
+const str = "lnjgftrfgkmnkhgjychvjhhg";
+
+const foo = (abc) => {
+  // [...abc];
+  return [...abc];
+};
+
+// console.log(foo(str));
+
+// АВТОПРОВЕРКА
+
+// console.log(pointer);
+
+// Задача 2/48 Дополни функцию makeMessage так, чтобы она ожидала вторым параметром (параметр callback) колбэк-функцию и возвращала ее вызов. Функция deliverPizza или makePizza будет передаваться как колбэк и ожидать аргументом имя готовой доставляемой пиццы.
+
+// function deliverPizza(pizzaName) {
+//   return `Delivering ${pizzaName} pizza.`;
+// }
+
+// function makePizza(pizzaName) {
+//   return `Pizza ${pizzaName} is being prepared, please wait...`;
+// }
+
+// // Chande code below this line
+// function makeMessage(pizzaName, callback) {
+//   return callback(pizzaName);
+// }
+
+// console.log(makeMessage("margarita", makePizza));
+
+// Задача 3/48 Дополни второй вызов функции makePizza(pizzaName, callback), передав вторым аргументом инлайн колбэк-функцию eatPizza(pizzaName), которая логирует строку "Eating pizza <имя пиццы>".
+
+// function makePizza(pizzaName, callback) {
+//   console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+//   callback(pizzaName);
+// }
+
+// makePizza("Royal Grand", function deliverPizza(pizzaName) {
+//   console.log(`Delivering pizza ${pizzaName}.`);
+// });
+// // Change code below this line
+
+// // makePizza("Ultracheese", function);
+// makePizza("Ultracheese", function eatPizza(pizzaName) {
+//   console.log(`Eating pizza ${pizzaName}`);
+// });
+
+// Задача 4/48 Необходимо написать логику обработки заказа пиццы. Выполни рефакторинг метода order так, чтобы он принимал вторым и третим параметрами два колбэка onSuccess и onError.
+
+// Если в свойстве pizzas нет пиццы с названием из параметра pizzaName, метод order должен возвращать результат вызова колбэка onError, передавая ему аргументом строку "There is no pizza with a name <имя пиццы> in the assortment."
+// Если в свойстве pizzas есть пицца с названием из параметра pizzaName, метод order должен возвращать результат вызова колбэка onSuccess, передавая ему аргументом имя заказанной пиццы.
+// После объявления объекта pizzaPalace мы добавили колбэки и вызовы методов. Пожалуйста ничего там не меняй.
+
+const pizzaPalace = {
+  pizzas: ["Ultracheese", "Smoked", "Four meats"],
+  order(pizzaName, makePizza, onOrderError) {
+    if (this.pizzas.includes(pizzaName)) {
+      console.log(makePizza(pizzaName));
+      return;
+    }
+    console.log(
+      onOrderError(
+        `There is no pizza with a name ${pizzaName} in the assortment.`
+      )
+    );
+    return;
+  },
+};
+// Change code above this line
+
+// Callback for onSuccess
+function makePizza(pizzaName) {
+  return `Your order is accepted. Cooking pizza ${pizzaName}.`;
+}
+
+// Callback for onError
+function onOrderError(error) {
+  return `Error! ${error}`;
+}
+
+// Method calls with callbacks
+pizzaPalace.order("Smoked", makePizza, onOrderError);
+pizzaPalace.order("Four meats", makePizza, onOrderError);
+pizzaPalace.order("Big Mike", makePizza, onOrderError);
+pizzaPalace.order("Vienna", makePizza, onOrderError);
+
