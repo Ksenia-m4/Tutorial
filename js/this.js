@@ -153,3 +153,8 @@ const calculator = {
 // calculator.create.call(calc2, 2, 5);
 // console.log(calc2);
 // console.log(calculator.mult(5, 5));
+
+// const obj = {
+//   a: 5,
+// };
+// console.log(obj);
