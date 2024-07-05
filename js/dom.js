@@ -27,6 +27,6 @@ const closeBtn = document.querySelector('.editor button[data-action="close"]');
 // const link = document.querySelector(".article .link");
 // console.log(link.innerHTML);
 
-const currentLink = "/blog";
-const linkEl = document.querySelector(`.link[href="${currentLink}"]`); // найди в документе класс link у котого href будет соответсвовать currentLink
-console.log(linkEl);
+// const currentLink = "/blog";
+// const linkEl = document.querySelector(`.link[href="${currentLink}"]`); // найди в документе класс link у котого href будет соответсвовать currentLink
+// console.log(linkEl);
